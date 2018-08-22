@@ -26,6 +26,20 @@
 
     <dependencies>
 
+        <!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling-serial -->
+        <dependency>
+            <groupId>org.jboss.marshalling</groupId>
+            <artifactId>jboss-marshalling-serial</artifactId>
+            <version>2.0.5.Final</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling -->
+        <dependency>
+            <groupId>org.jboss.marshalling</groupId>
+            <artifactId>jboss-marshalling</artifactId>
+            <version>2.0.5.Final</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
             <groupId>io.netty</groupId>
@@ -35,53 +49,10 @@
 
         <dependency>
             <groupId>io.netty</groupId>
-            <artifactId>netty-handler</artifactId>
-            <version>5.0.0.Alpha1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
             <artifactId>netty-common</artifactId>
             <version>5.0.0.Alpha1</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-buffer</artifactId>
-            <version>5.0.0.Alpha1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-transport</artifactId>
-            <version>5.0.0.Alpha1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-codec</artifactId>
-            <version>5.0.0.Alpha1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-codec-http</artifactId>
-            <version>5.0.0.Alpha1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.netty/netty-codec-http2 -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-codec-http2</artifactId>
-            <version>5.0.0.Alpha2</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.jvnet.hudson/ganymed-ssh-2 -->
-        <dependency>
-            <groupId>org.jvnet.hudson</groupId>
-            <artifactId>ganymed-ssh-2</artifactId>
-            <version>build260</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.samba.jcifs/jcifs -->
         <dependency>
             <groupId>org.samba.jcifs</groupId>
@@ -96,23 +67,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>15.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.caucho</groupId>
-            <artifactId>hessian</artifactId>
-            <version>4.0.38</version>
-        </dependency>
-
-        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
@@ -124,55 +78,6 @@
             <version>1.2.9</version>
         </dependency>
 
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-            <version>5.9.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor_2.12</artifactId>
-            <version>2.5.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-remote_2.10</artifactId>
-            <version>2.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-slf4j_2.10</artifactId>
-            <version>2.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-transactor_2.10</artifactId>
-            <version>2.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-agent_2.11</artifactId>
-            <version>2.3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-persistence_2.11</artifactId>
-            <version>2.4.16</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
             <groupId>commons-io</groupId>
@@ -180,19 +85,12 @@
             <version>2.6</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
         <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>4.5.1</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.6</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform -->
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna-platform</artifactId>
-            <version>4.5.1</version>
-        </dependency>
-
+        <!-- slf4j bound to Log4j end -->
 
     </dependencies>
 
