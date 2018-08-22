@@ -1,7 +1,6 @@
 package com.zhaowb.netty.ch14;
 
 import org.jboss.marshalling.*;
-
 import java.io.IOException;
 
 public class MarshallingCodecFactory {

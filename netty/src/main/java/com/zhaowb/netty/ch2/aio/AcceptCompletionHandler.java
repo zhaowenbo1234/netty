@@ -8,7 +8,7 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
 
     @Override
     public void completed(AsynchronousSocketChannel result, AsyncTimeServerHandler attachment) {
-        attachment.asynchronousServerSocketChannel.accept(attachment,this);
+        attachment.asynchronousServerSocketChannel.accept(attachment, this);
         ByteBuffer buffer = ByteBuffer.allocate(1024);
 
         /**
@@ -16,7 +16,7 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
          *  A attachment, 异步 Channel 携带的附件，通知回调的时候作为入参使用
          *  CompletionHandler<Integer,? super A> handler ： 接受通知回调的业务 handle
          */
-        result.read(buffer,buffer,new ReadCompletionHandler(result));
+        result.read(buffer, buffer, new ReadCompletionHandler(result));
     }
 
     @Override

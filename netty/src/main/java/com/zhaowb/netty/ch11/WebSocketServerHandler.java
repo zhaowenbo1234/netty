@@ -71,6 +71,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
     /**
      * 对WebSocket 请求消息进行处理，首先需要对控制帧进行判断，如果是关闭链路的控制信息，就调用WebSocketServerHandshaker
      * 的close 方法关闭WebSocket连接，如果是维持链路的Ping消息，则构造Pong消息返回。
+     *
      * @param ctx
      * @param frame
      */

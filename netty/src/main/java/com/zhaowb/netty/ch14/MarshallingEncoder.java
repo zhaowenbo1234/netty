@@ -3,7 +3,6 @@ package com.zhaowb.netty.ch14;
 import io.netty.buffer.ByteBuf;
 import org.jboss.marshalling.Marshaller;
 
-
 import java.io.IOException;
 
 /**

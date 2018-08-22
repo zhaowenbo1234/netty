@@ -69,4 +69,3 @@ public class HeartBeatReqHandler extends ChannelHandlerAdapter {
         ctx.fireExceptionCaught(cause);
     }
 }
-

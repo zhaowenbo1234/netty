@@ -16,10 +16,10 @@ public class Test {
                 "B1306\n" +
                 "B1307\n";
         String[] ss = s.split("\n");
-        for (String m :ss){
-           sb.append(m+",");
+        for (String m : ss) {
+            sb.append(m + ",");
         }
-        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length() - 1);
 
         System.out.println(sb.toString());
     }

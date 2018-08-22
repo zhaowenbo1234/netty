@@ -91,11 +91,12 @@ public class TimeClientHandle implements Runnable {
     }
 
     /**
-     *  首先判断 SelectionKey 处于什么状态，如果是处于连接状态，说明服务端已经返回 ACK 应答消息。此时对连接结果进行判断，
-     *      调用 SocketChannel 的 finishConnect()方法，如果返回 true ，说明客户端连接成功；如果返回 false 或者直接抛出
-     *      IOException ,说明连接失败。
-     *   连接成功： 将 SocketChannel 注册到多路复用器上，注册 SelectionKey.OP_READ 操作位，监听网络读操作，然后发送请求
-     *      消息给服务端。
+     * 首先判断 SelectionKey 处于什么状态，如果是处于连接状态，说明服务端已经返回 ACK 应答消息。此时对连接结果进行判断，
+     * 调用 SocketChannel 的 finishConnect()方法，如果返回 true ，说明客户端连接成功；如果返回 false 或者直接抛出
+     * IOException ,说明连接失败。
+     * 连接成功： 将 SocketChannel 注册到多路复用器上，注册 SelectionKey.OP_READ 操作位，监听网络读操作，然后发送请求
+     * 消息给服务端。
+     *
      * @param key
      * @throws IOException
      */
@@ -147,9 +148,9 @@ public class TimeClientHandle implements Runnable {
 
     /**
      * 先判断 SocketChannel 的 connect() 操作，如果连接成功，则将 SocketChannel 注册到多路复用器 Selector 上，
-     *   注册 SelectionKey.OP_READ ，如果没有直接连接成功，则说明服务端没有返回 TCP 握手应答消息，但这不代表连接失败，
-     *   需要将 SocketChannel 注册到多路复用器 Selector 上，注册 SelectionKey.OP_CONNECT ，当服务端返回 TCP syn-ack 消息后，
-     *   Selector 就能轮询到这个 SocketChannel 处于连接就绪状态。
+     * 注册 SelectionKey.OP_READ ，如果没有直接连接成功，则说明服务端没有返回 TCP 握手应答消息，但这不代表连接失败，
+     * 需要将 SocketChannel 注册到多路复用器 Selector 上，注册 SelectionKey.OP_CONNECT ，当服务端返回 TCP syn-ack 消息后，
+     * Selector 就能轮询到这个 SocketChannel 处于连接就绪状态。
      *
      * @throws IOException
      */
@@ -166,6 +167,7 @@ public class TimeClientHandle implements Runnable {
      * 构造请求消息体，然后编码，写入到发送缓冲区中，最后调用 SocketChannel 的 write 方法进行发送。由于发送是异步的，
      * 所以会存在“半包写”问题，最后通过 hasRemaining() 方法对发送结果进行判断，如果缓冲区中的消息全部发送完成，打印
      * " Send order 2 server succeed.".
+     *
      * @param sc
      * @throws IOException
      */

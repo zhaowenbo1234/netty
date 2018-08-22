@@ -20,14 +20,14 @@ public class TimeServer {
             server = new ServerSocket(port);
             System.out.println("The time server is start in port : " + port);
             Socket socket = null;
-            TimeServerHandelerExecutePool singleExecute = new TimeServerHandelerExecutePool(50,100);
-            while (true){
+            TimeServerHandelerExecutePool singleExecute = new TimeServerHandelerExecutePool(50, 100);
+            while (true) {
                 socket = server.accept();
                 singleExecute.executeTask(new TimeServerHandler(socket));
             }
 
         } finally {
-            if (server != null){
+            if (server != null) {
                 System.out.println("The time server close");
                 server.close();
                 server = null;

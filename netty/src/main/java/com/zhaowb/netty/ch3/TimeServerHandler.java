@@ -14,7 +14,7 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
         ByteBuf buf = (ByteBuf) msg;
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
-        String body = new String(req,"UTF-8");
+        String body = new String(req, "UTF-8");
         System.out.println("the time server receive order : " + body);
         String currentTime = "QUERY TIME ORDER"
                 .equalsIgnoreCase(body) ? new Date(
@@ -26,6 +26,7 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
 
     /**
      * 当监听到端口时调用 channelActive 打印 "连接成功！"
+     *
      * @param ctx
      * @throws Exception
      */
@@ -36,7 +37,7 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-       ctx.flush();
+        ctx.flush();
     }
 
     /**

@@ -28,7 +28,7 @@ public class Test {
         System.out.println(t);
         System.out.println("===========================");
 
-        List<Double> doubles = new ArrayList<Double>() ;
+        List<Double> doubles = new ArrayList<Double>();
         doubles.add(1.0);
         doubles.add(11.0);
         doubles.add(10.0);
@@ -41,11 +41,11 @@ public class Test {
         doubles.add(13.0);
         int size = doubles.size();
 
-        for (int m = size-1;m >=0; m--){
+        for (int m = size - 1; m >= 0; m--) {
 
-            double tt = Math.abs(doubles.get(m) -10 )/10;
+            double tt = Math.abs(doubles.get(m) - 10) / 10;
 
-            if (tt >0.05){
+            if (tt > 0.05) {
                 doubles.remove(m);
             }
         }

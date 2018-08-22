@@ -11,7 +11,6 @@ import jcifs.smb.SmbFile;
 import jcifs.smb.SmbFileOutputStream;
 
 /**
- *
  * <b>类名称：</b>CopyFileToLan<br/>
  * <b>类描述：</b> 本地文件写入局域网共享文件夹   <br/>
  * <b>版本：</b>V1.0<br/>
@@ -19,7 +18,7 @@ import jcifs.smb.SmbFileOutputStream;
  */
 public class CopyFileToLan {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         InputStream in = null;
         OutputStream out = null;
@@ -49,21 +48,19 @@ public class CopyFileToLan {
                 out.write(buffer, 0, len);
             }
             out.flush();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             String msg = "发生错误：" + e.getLocalizedMessage();
             System.out.println(msg);
-        }
-        finally {
+        } finally {
             try {
-                if(out != null) {
+                if (out != null) {
                     out.close();
                 }
-                if(in != null) {
+                if (in != null) {
                     in.close();
                 }
+            } catch (Exception e) {
             }
-            catch (Exception e) {}
         }
     }
 }

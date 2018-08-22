@@ -42,7 +42,7 @@ public class TimeServer {
         }
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         int port = 8080;
 
         if (args != null && args.length > 0) {

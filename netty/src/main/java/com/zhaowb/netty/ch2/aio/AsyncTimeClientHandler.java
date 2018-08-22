@@ -15,7 +15,8 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
     private CountDownLatch latch;
 
     /**
-     *  通过 AsynchronousSocketChannel 的open 方法创建一个新的 AsynchronousSocketChannel 对象，
+     * 通过 AsynchronousSocketChannel 的open 方法创建一个新的 AsynchronousSocketChannel 对象，
+     *
      * @param host
      * @param port
      */
@@ -65,9 +66,9 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
         client.write(writeBuffer, writeBuffer, new CompletionHandler<Integer, ByteBuffer>() {
             @Override
             public void completed(Integer result, ByteBuffer attachment) {
-                if (attachment.hasRemaining()){
-                    client.write(attachment,attachment,this);
-                }else {
+                if (attachment.hasRemaining()) {
+                    client.write(attachment, attachment, this);
+                } else {
                     ByteBuffer readBuffer = ByteBuffer.allocate(1024);
                     client.read(readBuffer, readBuffer, new CompletionHandler<Integer, ByteBuffer>() {
                         @Override
@@ -75,12 +76,12 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
                             attachment.flip();
                             byte[] bytes = new byte[attachment.remaining()];
                             attachment.get(bytes);
-                            String body ;
+                            String body;
                             try {
                                 body = new String(bytes, "UTF-8");
                                 System.out.println(" Now is : " + body);
                                 latch.countDown();
-                            } catch (IOException e){
+                            } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
@@ -89,7 +90,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
                         public void failed(Throwable exc, ByteBuffer attachment) {
                             try {
                                 client.close();
-                            }catch (IOException e){
+                            } catch (IOException e) {
 
                             }
                         }
@@ -102,7 +103,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
             public void failed(Throwable exc, ByteBuffer attachment) {
                 try {
                     client.close();
-                }catch (IOException e){
+                } catch (IOException e) {
 
                 }
             }
@@ -116,7 +117,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
         try {
             client.close();
             latch.countDown();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

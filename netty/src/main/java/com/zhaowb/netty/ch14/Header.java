@@ -15,7 +15,6 @@ public class Header {
     private byte priority;// 消息优先级
     private Map<String, Object> attachment = new HashMap<String, Object>();
 
-
     public final int getCrcCode() {
         return crcCode;
     }

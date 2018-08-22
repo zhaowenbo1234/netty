@@ -13,6 +13,6 @@ public class TimeServer {
         }
         // 创建异步的时间服务器处理类，然后启动线程将 AsyncTimeServerHandle 拉起
         AsyncTimeServerHandler timeServer = new AsyncTimeServerHandler(port);
-        new Thread(timeServer,"AIO-AsyncTimeServerHandler-001").start();
+        new Thread(timeServer, "AIO-AsyncTimeServerHandler-001").start();
     }
 }

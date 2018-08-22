@@ -17,7 +17,6 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * 客户端
  */
@@ -27,7 +26,6 @@ public class NettyClient {
     private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     EventLoopGroup group = new NioEventLoopGroup();
-
     public void connect(int port, String host) throws Exception {
 
         // 配置客户端NIO线程组

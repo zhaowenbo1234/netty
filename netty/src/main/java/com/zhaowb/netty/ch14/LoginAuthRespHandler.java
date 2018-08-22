@@ -70,7 +70,6 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
         }
     }
 
-
     private NettyMessage buildResponse(byte result) {
 
         NettyMessage message = new NettyMessage();
@@ -80,5 +79,4 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
         message.setBody(result);
         return message;
     }
-
 }

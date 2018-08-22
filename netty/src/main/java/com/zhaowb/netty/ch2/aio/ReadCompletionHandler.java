@@ -12,6 +12,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
 
     /**
      * 将 AsynchronousSocketChannel 通过参数传递到 ReadCompletionHandler 中当做变量使用，主要用于读取半包消息和发送应答。
+     *
      * @param channel
      */
     public ReadCompletionHandler(AsynchronousSocketChannel channel) {
@@ -24,6 +25,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
      * 读取到消息后的处理，对 attachment 进行 flip 操作，为后续从缓冲区读取数据做准备。根据缓冲区的可读字节数创建 byte
      * 数组，然后通过 new String 方法创建请求消息，对请求消息进行判断，如果是 QUERY TIME ORDER，获取当前系统服务器的时间，
      * 调用 doWrite 方法发送给客户端。
+     *
      * @param result
      * @param attachment
      */
@@ -45,7 +47,8 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
 
     /**
      * 对当前时间进行合法性校验，如果合法，调用字符串的解码方法将应答消息编码成字节数组，然后将它复制到发送缓冲区
-     *      writeBuffer 中，最后调用 AsynchronousSocketChannel 的异步 write 方法。
+     * writeBuffer 中，最后调用 AsynchronousSocketChannel 的异步 write 方法。
+     *
      * @param currentTime
      */
     private void doWrite(String currentTime) {

@@ -21,6 +21,7 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
 
     /**
      * 当连接成功时，调用 writeAndFlush 发送 firstMessage 到服务端
+     *
      * @param ctx
      * @throws Exception
      */
@@ -31,6 +32,7 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
 
     /**
      * 当服务端的有数据发送过来时，调用 channelRead 接受数据，并打印
+     *
      * @param ctx
      * @param msg
      * @throws Exception
@@ -40,12 +42,13 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
         ByteBuf buf = (ByteBuf) msg;
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
-        String body = new String (req,"UTF-8");
+        String body = new String(req, "UTF-8");
         System.out.println("Now is : " + body);
     }
 
     /**
      * 出现异常时，打印错误，并关闭
+     *
      * @param ctx
      * @param cause
      * @throws Exception

@@ -217,7 +217,7 @@ public class ChineseProverbServerHandler extends SimpleChannelInboundHandler<Dat
             "创业百年，败家一天。",
             "吹嘘自己的人，等于在宣传他的无知。"};
 
-    private String nextQuote(){
+    private String nextQuote() {
         int quoteId = ThreadLocalRandom.current().nextInt(DICTIONARY.length);
         return DICTIONARY[quoteId];
     }
@@ -226,10 +226,10 @@ public class ChineseProverbServerHandler extends SimpleChannelInboundHandler<Dat
     protected void messageReceived(ChannelHandlerContext ctx, DatagramPacket packet) throws Exception {
         String req = packet.content().toString(CharsetUtil.UTF_8);// 将packet 内容转换为字符串（利用ByteBuf的toString（CharSet）方法）
         System.out.println(req);
-        if ("谚语词典查询?".equals(req)){
+        if ("谚语词典查询?".equals(req)) {
 
             // DatagramPacket（发生的内容，目的地址（IP和端口））
-            ctx.writeAndFlush(new DatagramPacket(Unpooled.copiedBuffer("谚语查询结果:" + nextQuote(),CharsetUtil.UTF_8),packet.sender()));
+            ctx.writeAndFlush(new DatagramPacket(Unpooled.copiedBuffer("谚语查询结果:" + nextQuote(), CharsetUtil.UTF_8), packet.sender()));
         }
     }
 
