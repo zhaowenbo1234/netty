@@ -14,12 +14,16 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
  * 客户端
  */
 public class NettyClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyClient.class);
     private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     EventLoopGroup group = new NioEventLoopGroup();
@@ -45,17 +49,17 @@ public class NettyClient {
                     });
 
 
-            System.out.println("this is connect before");
+            LOGGER.info("this is connect before");
             // 发起异步连接操作
             ChannelFuture future = b.connect(new InetSocketAddress(host, port),
-                    new InetSocketAddress(NettyConstant.LOCALIP,NettyConstant.LOCAL_PORT)).sync();// 绑定本地端口
+                    new InetSocketAddress(NettyConstant.LOCALIP, NettyConstant.LOCAL_PORT)).sync();// 绑定本地端口
 
             // 当对应的channel关闭的时候，就会返回对应的channel。
             // Returns the ChannelFuture which will be notified when this channel is closed. This method always returns the same future instance.
             future.channel().closeFuture().sync();
-            System.out.println("Netty client start ok : " + (host + " : " + port));
+            LOGGER.info("Netty client start ok : " + (host + " : " + port));
 
-        }  finally {
+        } finally {
             // 所有资源释放完成之后，清空资源，再次发起重连操作
             executor.execute(new Runnable() {
                 @Override

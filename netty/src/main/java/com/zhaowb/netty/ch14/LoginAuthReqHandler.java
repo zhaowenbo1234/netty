@@ -2,19 +2,24 @@ package com.zhaowb.netty.ch14;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 握手认证客户端，用于在通道激活时发起握手请求
  */
 public class LoginAuthReqHandler extends ChannelHandlerAdapter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyClient.class);
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("LoginAuthReqHandler channelActive");
+        LOGGER.info("LoginAuthReqHandler channelActive");
 
         //当客户端跟服务端TCP三次握手成功之后，由客户端构造握手请求消息发送给服务端
         ctx.writeAndFlush(buildLoginReq());
 
-        System.out.println("LoginAuthReqHandler 发送登陆请求" + buildLoginReq().toString());
+        LOGGER.info("LoginAuthReqHandler 发送登陆请求" + buildLoginReq().toString());
     }
 
     // 握手请求发送之后，按照协议规范，服务端需要返回握手应答消息。
@@ -30,7 +35,7 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter {
                 // 握手失败，关闭链路
                 ctx.close();
             } else {
-                System.out.println("Login is ok : " + message);
+                LOGGER.info("Login is ok : " + message);
                 ctx.fireChannelRead(msg);
             }
         } else {

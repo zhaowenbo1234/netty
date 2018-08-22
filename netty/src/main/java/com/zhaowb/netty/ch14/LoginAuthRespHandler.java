@@ -2,6 +2,8 @@ package com.zhaowb.netty.ch14;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
@@ -12,6 +14,7 @@ import java.util.Map;
  */
 public class LoginAuthRespHandler extends ChannelHandlerAdapter {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyClient.class);
     /**
      * 本地缓存
      */
@@ -22,7 +25,7 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("LoginAuthRespHandler  channelActive");
+        LOGGER.info("LoginAuthRespHandler  channelActive");
     }
 
     @Override
@@ -37,7 +40,7 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         NettyMessage message = (NettyMessage) msg;
 
-        System.out.println("LoginAuthRespHandler server 接收到的消息 msg : =  " + msg);
+        LOGGER.info("LoginAuthRespHandler server 接收到的消息 msg : =  " + msg);
         // 如果是握手请求消息，处理，其它消息透传
         if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_REQ.value()) {
             String nodeIndex = ctx.channel().remoteAddress().toString();
@@ -59,7 +62,7 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
                 if (isOK) {
                     nodeCheck.put(nodeIndex, true);
                 }
-                System.out.println("The login response is :" + loginResp + " body [" + loginResp.getBody() + "]");
+                LOGGER.info("The login response is :" + loginResp + " body [" + loginResp.getBody() + "]");
                 ctx.writeAndFlush(loginResp);
             }
         } else {

@@ -17,6 +17,7 @@ public class MarshallingEncoder {
     public MarshallingEncoder() throws IOException {
         marshaller = MarshallingCodecFactory.buildMarshalling();
     }
+
     // 使用marshall对Object进行编码，并且写入bytebuf...
     protected void encode(Object msg, ByteBuf out) throws Exception {
 

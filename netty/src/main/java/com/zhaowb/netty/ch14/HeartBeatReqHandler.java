@@ -2,6 +2,8 @@ package com.zhaowb.netty.ch14;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +12,8 @@ import java.util.concurrent.TimeUnit;
  * 客户端发送心跳
  */
 public class HeartBeatReqHandler extends ChannelHandlerAdapter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyClient.class);
 
     //使用定时任务发送
     private volatile ScheduledFuture<?> heartBeat;
@@ -25,11 +29,12 @@ public class HeartBeatReqHandler extends ChannelHandlerAdapter {
                     new HeartBeatReqHandler.HeartBeatTask(ctx), 0, 5000, TimeUnit.MILLISECONDS
             );
         } else if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEARTBEAT_RESP.value()) {
-            System.out.println("Client receive server heart beat message : ---> " + message);
+            LOGGER.info("Client receive server heart beat message : ---> " + message);
         } else {
             ctx.fireChannelRead(msg);
         }
     }
+
     //Ping消息任务类
     private class HeartBeatTask implements Runnable {
         private final ChannelHandlerContext ctx;
@@ -41,7 +46,7 @@ public class HeartBeatReqHandler extends ChannelHandlerAdapter {
         @Override
         public void run() {
             NettyMessage heatBeat = buildHeartBeat();
-            System.out.println("Client send heart beat message to server : ---> " + heatBeat);
+            LOGGER.info("Client send heart beat message to server : ---> " + heatBeat);
             ctx.writeAndFlush(heatBeat);
         }
     }

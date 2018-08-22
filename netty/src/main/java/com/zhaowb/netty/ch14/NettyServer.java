@@ -10,11 +10,16 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 服务端
  */
 public class NettyServer {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyClient.class);
+
     public void bind() throws Exception {
         // 配置服务端的NIO线程组
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -38,7 +43,7 @@ public class NettyServer {
                 });
         // 绑定端口，同步等待成功
         b.bind(NettyConstant.REMOTEIP, NettyConstant.PORT).sync();
-        System.out.println("Netty server start ok : " + (NettyConstant.REMOTEIP + " : " + NettyConstant.PORT));
+        LOGGER.info("Netty server start ok : " + (NettyConstant.REMOTEIP + " : " + NettyConstant.PORT));
     }
 
     public static void main(String[] args) throws Exception {
