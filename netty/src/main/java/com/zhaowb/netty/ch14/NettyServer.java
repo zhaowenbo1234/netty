@@ -31,14 +31,11 @@ public class NettyServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(
-                                new NettyMessageDecoder(1024 * 1024 * 5, 4, 4));
+                        ch.pipeline().addLast(new NettyMessageDecoder(1024 * 1024 * 5, 4, 4));
                         ch.pipeline().addLast(new NettyMessageEncoder());
-                        ch.pipeline().addLast("readTimeoutHandler",
-                                new ReadTimeoutHandler(50));
+                        ch.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
                         ch.pipeline().addLast(new LoginAuthRespHandler());
-                        ch.pipeline().addLast("HeartBeatHandler",
-                                new HeartBeatRespHandler());
+                        ch.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
                     }
                 });
         // 绑定端口，同步等待成功
