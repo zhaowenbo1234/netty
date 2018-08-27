@@ -299,5 +299,4 @@ protected final void checkReadableBytes(int minimumReadableBytes) {
     }
 }
 ```
-
 如果检验通过，则设置新的读索引为旧的索引值与跳跃的长度之和，然后对新的读索引进行判断，如果大于写索引，则抛出IndexOutOfBoundsException异常，如果合法，则读索引设置为新的读索引。这样后续的读操作的时候就会从新的读索引开始，跳过length个字节。
