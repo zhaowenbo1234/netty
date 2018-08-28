@@ -13,8 +13,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
-import java.io.File;
-
 public class FileServer {
 
     public void run(int port) throws Exception {
