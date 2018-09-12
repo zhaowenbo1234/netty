@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * @author zwb
  * 寻找数组的中心索引
  * 给定一个整数类型的数组 nums，请编写一个能够返回数组“中心索引”的方法。
  * <p>
@@ -31,65 +32,58 @@ import org.slf4j.LoggerFactory;
  * <p>
  * nums 的长度范围为 [0, 10000]。
  * 任何一个 nums[i] 将会是一个范围在 [-1000, 1000]的整数。
+ * <p>
+ * <p>
+ * 思路：
+ * 三个sum存放三个和，先算出一个总sum来是为了下面计算方便，然后移动一个从左到右的cursor，
+ * 注意cursor在第一个元素时需要单独考虑。分别算出cursor左边还有右边的值然后比对，返回cursor。
  */
 public class ArrayCenterIndex {
 
     private static Logger logger = LoggerFactory.getLogger(ArrayCenterIndex.class);
-
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        int[] nums = {-1, -1, -1, -1, -1, 0};
+        int[] num = {1, 7, 3, 6, 5, 6};
         ArrayCenterIndex arrayCenterIndex = new ArrayCenterIndex();
-        int i = arrayCenterIndex.pivotIndex(nums);
+        int i = arrayCenterIndex.pivotIndex(num);
         long end = System.currentTimeMillis();
         System.out.println(i);
 
         logger.info("用时{}", (end - start));
     }
 
-    public int pivotIndex(int[] nums) {
-        int length = nums.length;
-        if (length <= 2) {
+    public int pivotIndex(int[] num) {
+
+        int minLength = 2;
+
+        int length = num.length;
+
+        if (length < minLength) {
             return -1;
         }
-        int num1 = 0;
-        int num2 = 0;
-        int n = length / 2;
-        for (int i = 0; i < n; i++) {
-            num1 = num1 + nums[i];
-        }
-        for (int j = n; j < length - 1; j++) {
-            num2 = num2 + nums[j];
-        }
-        if (num1 == num2) {
-            return n;
-        }
-        while (n > 0 && n < length - 1) {
-            if (num1 == num2) {
-                return n;
-            } else if (num1 > num2) {
-                if (nums[n] <= 0) {
-                    num1 = num1 + nums[n];
-                    num2 = num2 - nums[n];
-                } else {
-                    num1 = num1 - nums[n];
-                    num2 = num2 + nums[n];
-                }
-                if (num1 < num2) {
-                    return -1;
-                }
-                n--;
 
+        // 总和
+        int sum = 0;
+        // 左侧和
+        int sumLeft = 0;
+        // 右侧和
+        int sumRight = 0;
+
+        for (int n : num) {
+            sum += n;
+        }
+
+        for (int i = 0; i < length; i++) {
+            if (i == 0) {
+                sumLeft = 0;
             } else {
-                num1 = num1 + nums[n];
-                num2 = num2 - nums[n];
-                if (num1 > num2) {
-                    return -1;
-                }
-                n++;
+                sumLeft += num[i - 1];
             }
-
+            sumRight = sum - sumLeft - num[i];
+            if (sumLeft == sumRight) {
+                return i;
+            }
         }
         return -1;
     }
