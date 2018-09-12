@@ -1,10 +1,11 @@
 package com.zhaowb.netty.weight;
 
 /**
- * @author zwb 
+ * @author zwb
  */
 public class Tests {
     private final static int LENGTH = 100;
+
     public static void main(String[] args) {
         int a;
         int b;

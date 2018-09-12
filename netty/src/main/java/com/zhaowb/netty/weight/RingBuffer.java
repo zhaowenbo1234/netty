@@ -3,8 +3,7 @@ package com.zhaowb.netty.weight;
 import java.util.Arrays;
 
 /**
- * @author
- * 缓冲类
+ * @author 缓冲类
  */
 public final class RingBuffer {
     /**
@@ -12,13 +11,6 @@ public final class RingBuffer {
      */
     public static final int MAX_BUFFER_NUM =
             Integer.parseInt("10");
-
-//    public static final int MAX_BUFFER_NUM =
-//            Integer.parseInt(/*ConfigHolder.getConfig().getParam().get("c5c6.device.es.buffer.max.length")*/"10");
-    /**
-     * 读指针
-     */
-//    private int iReadPointer = 0;
     /**
      * 写指针
      */

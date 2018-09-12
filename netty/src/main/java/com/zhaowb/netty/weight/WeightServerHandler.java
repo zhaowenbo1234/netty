@@ -17,10 +17,10 @@ import java.util.Map;
  */
 public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPacket> {
     private final static Logger logger = LoggerFactory.getLogger(WeightServerHandler.class);
-    static Map<String, RingBuffer> bufferMap = new HashMap<String, RingBuffer>();
+    static Map<String, RingBuffer> bufferMap = new HashMap<>();
 
     @Override
-    protected synchronized void messageReceived(ChannelHandlerContext ctx, DatagramPacket packet) throws Exception {
+    protected synchronized void messageReceived(ChannelHandlerContext ctx, DatagramPacket packet) {
         InetSocketAddress address = packet.sender();
 
         byte[] bytes = new byte[packet.content().readableBytes()];
@@ -76,7 +76,6 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
             iCheckStatus = b3s3;
             boolean condtion1 = (b3s012 == 0 && b3s56 == 1);
             logger.info("check condition [b1s56 == 1 &&  b2s45 == 0x3 && b3s012 == 0 && b3s56 == 1] -> " + condtion1);
-            //if (condtion1) {
             result = num5;
             if (b2s1 == 1) {
                 result = (-result);
@@ -99,13 +98,13 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
                 }
             }
         }
-        //}
         return null;
     }
 
     /**
      * 校验和算法
-     * @param arr
+     *
+     * @param arr int数组
      * @return
      */
     public static boolean validate(int[] arr) {

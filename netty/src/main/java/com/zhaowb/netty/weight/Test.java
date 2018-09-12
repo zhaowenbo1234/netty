@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author zwb
- *
  */
 public class Test {
     private final static Logger logger = LoggerFactory.getLogger(Test.class);
