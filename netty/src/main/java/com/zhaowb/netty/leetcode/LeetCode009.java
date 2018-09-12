@@ -28,19 +28,20 @@ public class LeetCode009 {
         System.out.println(m);
 
     }
+
     public boolean isPalindrome(int x) {
 
-        if (x < 0 ||( x % 10 ==0 && x != 0)){
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
         } else {
             int tmp = 0;
             int n = x;
-            while (x > 0){
+            while (x > 0) {
 
                 tmp = tmp * 10 + x % 10;
                 x = x / 10;
             }
-           return tmp == n;
+            return tmp == n;
         }
     }
 }

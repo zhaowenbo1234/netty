@@ -26,6 +26,7 @@ public class NettyClient {
     private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     EventLoopGroup group = new NioEventLoopGroup();
+
     public void connect(int port, String host) throws Exception {
 
         // 配置客户端NIO线程组
@@ -48,7 +49,8 @@ public class NettyClient {
             LOGGER.info("this is connect before");
             // 发起异步连接操作
             ChannelFuture future = b.connect(new InetSocketAddress(host, port),
-                    new InetSocketAddress(NettyConstant.LOCALIP, NettyConstant.LOCAL_PORT)).sync();// 绑定本地端口
+                    // 绑定本地端口
+                    new InetSocketAddress(NettyConstant.LOCALIP, NettyConstant.LOCAL_PORT)).sync();
 
             // 当对应的channel关闭的时候，就会返回对应的channel。
             // Returns the ChannelFuture which will be notified when this channel is closed. This method always returns the same future instance.
@@ -63,7 +65,8 @@ public class NettyClient {
                     try {
                         TimeUnit.SECONDS.sleep(5);
                         try {
-                            connect(NettyConstant.PORT, NettyConstant.REMOTEIP); // 发起重连操作
+                            // 发起重连操作
+                            connect(NettyConstant.PORT, NettyConstant.REMOTEIP);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

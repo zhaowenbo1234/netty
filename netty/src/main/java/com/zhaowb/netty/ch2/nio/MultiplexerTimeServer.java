@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
-
 public class MultiplexerTimeServer implements Runnable {
 
     private Selector selector;
@@ -66,8 +65,9 @@ public class MultiplexerTimeServer implements Runnable {
                     } catch (Exception e) {
                         if (key != null) {
                             key.cancel();
-                            if (key.channel() != null)
+                            if (key.channel() != null) {
                                 key.channel().close();
+                            }
                         }
                     }
                 }

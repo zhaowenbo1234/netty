@@ -24,7 +24,7 @@
             <groupId>org.jboss.marshalling</groupId>
             <artifactId>jboss-marshalling-serial</artifactId>
             <version>2.0.5.Final</version>
-          <!--  <scope>test</scope>--><!-- 一定一定不要有test ，如果有test 会导致Marshalling.getProvidedMarshallerFactory("serial"); 为null-->
+            <!--  <scope>test</scope>--><!-- 一定一定不要有test ，如果有test 会导致Marshalling.getProvidedMarshallerFactory("serial"); 为null-->
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling -->
         <dependency>
@@ -85,6 +85,19 @@
         </dependency>
         <!-- slf4j bound to Log4j end -->
 
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.49</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
     </dependencies>
 
     <build>

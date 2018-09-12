@@ -10,7 +10,7 @@ import java.util.List;
  * Created with IDEA
  *
  * @ClassName: LineCounter
- * @Description: 统计项目下所有去除空行后的行号,在main函数中传入项目的绝对路径（不能传入一个文件，要传入文件夹）。
+ * @Description: 统计项目下所有去除空行后的行号, 在main函数中传入项目的绝对路径（不能传入一个文件，要传入文件夹）。
  * @author: zwb
  * @create: 2018/9/10 10:01
  */
