@@ -41,6 +41,7 @@ import org.slf4j.LoggerFactory;
 public class ArrayCenterIndex {
 
     private static Logger logger = LoggerFactory.getLogger(ArrayCenterIndex.class);
+
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
