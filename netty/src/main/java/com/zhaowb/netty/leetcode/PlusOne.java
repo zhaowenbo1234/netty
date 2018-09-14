@@ -20,14 +20,14 @@ import org.slf4j.LoggerFactory;
  * 输入{9,9} 输出{1,0,0}
  * <p>
  * 思路1 ：
- *      转为String 在转为Integer + 1 ，但是当数组长度过长时，失败抛出异常
- *      Exception in thread "main" java.lang.NumberFormatException: For input string: "9876543210"
- *          at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
- *          at java.lang.Integer.parseInt(Integer.java:583)
- *          at java.lang.Integer.parseInt(Integer.java:615)
+ * 转为String 在转为Integer + 1 ，但是当数组长度过长时，失败抛出异常
+ * Exception in thread "main" java.lang.NumberFormatException: For input string: "9876543210"
+ * at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+ * at java.lang.Integer.parseInt(Integer.java:583)
+ * at java.lang.Integer.parseInt(Integer.java:615)
  * 思路2：
- *      1.从数组的后边向前判断是否是9，若是则将该位置为0，否则该位置数字 +1 退出循环。
- *      2.判断数组的第一个数字是否是10，或者0，若是则新建一个数组，将数组的第一位设为1，后边默认0，不动，返回新数组
+ * 1.从数组的后边向前判断是否是9，若是则将该位置为0，否则该位置数字 +1 退出循环。
+ * 2.判断数组的第一个数字是否是10，或者0，若是则新建一个数组，将数组的第一位设为1，后边默认0，不动，返回新数组
  *
  * @author zwb
  * @create 2018/9/13 17:30
@@ -47,21 +47,17 @@ public class PlusOne {
 
     public int[] plusOne(int[] digits) {
         int max = 9;
-        int ten = 10;
         int length = digits.length;
         for (int i = length - 1; i >= 0; i--) {
-            if (digits[i] >= max) {
-                digits[i] = 0;
-            } else {
+            if (digits[i] < max) {
                 digits[i] = digits[i] + 1;
-                break;
+                return digits;
+            } else {
+                digits[i] = 0;
             }
         }
-        if ( digits[0] == ten || digits[0] == 0) {
-            int[] nums = new int[length + 1];
-            nums[0] = 1;
-            return nums;
-        }
-        return digits;
+        int[] nums = new int[length + 1];
+        nums[0] = 1;
+        return nums;
     }
 }
