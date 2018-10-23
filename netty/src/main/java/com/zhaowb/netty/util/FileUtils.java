@@ -17,7 +17,7 @@ import java.io.FileInputStream;
 /**
  * Created with IDEA
  *
- *
+ * Excel
  * position_name	x_axis	y_axis	width	height	remark
  * A0111	0	0	9	1	A区仓位
  * A0112	0	1	9	1	A区仓位
@@ -27,6 +27,16 @@ import java.io.FileInputStream;
  * A0103	6	2	3	3	A区仓位
  * A0104	15	2	3	3	A区仓位
  * A0105	18	2	3	3	A区仓位
+ *
+ * json
+ * [{"positionName":"A0111","yAxis":"0.0","xAxis":"0.0","width":"9.0","remark":"A区仓位","height":"1.0"},
+ * {"positionName":"A0112","yAxis":"1.0","xAxis":"0.0","width":"9.0","remark":"A区仓位","height":"1.0"},
+ * {"positionName":"A0113","yAxis":"0.0","xAxis":"15.0","width":"6.0","remark":"A区仓位","height":"2.0"},
+ * {"positionName":"A0101","yAxis":"2.0","xAxis":"0.0","width":"3.0","remark":"A区仓位","height":"3.0"},
+ * {"positionName":"A0102","yAxis":"2.0","xAxis":"3.0","width":"3.0","remark":"A区仓位","height":"3.0"},
+ * {"positionName":"A0103","yAxis":"2.0","xAxis":"6.0","width":"3.0","remark":"A区仓位","height":"3.0"},
+ * {"positionName":"A0104","yAxis":"2.0","xAxis":"15.0","width":"3.0","remark":"A区仓位","height":"3.0"},
+ * {"positionName":"A0105","yAxis":"2.0","xAxis":"18.0","width":"3.0","remark":"A区仓位","height":"3.0"}]
  *
  * @author zwb
  * @create 2018/10/23 10:42
