@@ -2,6 +2,7 @@ package com.zhaowb.netty.util;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zhaowb.netty.basewarehouseposition.entity.BaseWarehousePosition;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.List;
 
 /**
  * Created with IDEA
@@ -45,7 +47,7 @@ public class FileUtils {
 
     private static String[] name = {"positionName","xAxis","yAxis","width","height","remark"};
     private final static Logger log = LoggerFactory.getLogger(FileUtils.class);
-    public static void ExcelToJSONFile(String fileName) {
+    public static String ExcelToJSONFile(String fileName) {
 
         log.info("文件全称 = {}",fileName);
 
@@ -94,14 +96,20 @@ public class FileUtils {
                     }
                }
            }else {
+
                log.info("找不到指定文件 = {}",fileName);
            }
            log.info(jsonArray.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return jsonArray.toJSONString();
     }
     public static void main(String[] args) {
-        ExcelToJSONFile("C:/Users/zwb/Desktop/Test.xlsx");
+        String excelToJSONFile = ExcelToJSONFile("C:/Users/zwb/Desktop/003202001.xlsx");
+
+        List<BaseWarehousePosition> baseWarehousePositionList = JSONObject.parseArray(excelToJSONFile,BaseWarehousePosition.class);
+
+        System.out.println(baseWarehousePositionList);
     }
 }

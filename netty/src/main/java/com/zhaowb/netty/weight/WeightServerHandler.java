@@ -35,7 +35,7 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
         }
     }
 
-    public String prepareMessage(String socketAddress, byte[] bytes) {
+    public static String prepareMessage(String socketAddress, byte[] bytes) {
         RingBuffer cRingBuffer = bufferMap.get(socketAddress);
         if (cRingBuffer == null) {
             cRingBuffer = new RingBuffer();
@@ -46,6 +46,7 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
         String[] arrStr = str.split(" ");
         // 转换为int型数组
         int[] arr = new int[18];
+
         for (int i = 0; i < 18; i++) {
             arr[i] = Integer.parseInt(arrStr[i], 16);
         }
@@ -56,10 +57,10 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
 
         // 校验和
         boolean checkSum = validate(arr);
-
-        boolean condtion0 = checkSum == true && arr[0] == 0x02 && arr[16] == 0x0d;
+        //   字节1 ：起始字节，为0x02。字节4：固定字节 0x20。字节 17 ：为 0x0D
+        boolean condtion0 = checkSum && arr[0] == 0x02 && arr[3] == 0x20 && arr[16] == 0x0D;
         // 先判断第一个字节和第17个字节
-        logger.info("check condition [checkSum == 0 && arr[0] == 0x02 && arr[16] == 0x0d] ->" + condtion0);
+        logger.info("check condition [checkSum  && arr[0] == 0x02 && arr[3] == 0x20 && arr[16] == 0x0D] ->" + condtion0);
         if (condtion0) {
             char c = 48;
             int[] a = new int[]{arr[4] - c, arr[5] - c, arr[6] - c, arr[7] - c, arr[8] - c, arr[9] - c};
@@ -75,7 +76,7 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
 
             iCheckStatus = b3s3;
             boolean condtion1 = (b3s012 == 0 && b3s56 == 1);
-            logger.info("check condition [b1s56 == 1 &&  b2s45 == 0x3 && b3s012 == 0 && b3s56 == 1] -> " + condtion1);
+            logger.info("check condition [b3s012 == 0 && b3s56 == 1] -> " + condtion1);
             result = num5;
             if (b2s1 == 1) {
                 result = (-result);
@@ -108,6 +109,7 @@ public class WeightServerHandler extends SimpleChannelInboundHandler<DatagramPac
      * @return
      */
     public static boolean validate(int[] arr) {
+
         int i = 0;
         int tt = 0;
         int bb = 0;

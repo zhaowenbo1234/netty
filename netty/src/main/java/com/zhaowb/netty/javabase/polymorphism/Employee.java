@@ -1,10 +1,10 @@
-package com.zhaowb.netty.polymorphism;
+package com.zhaowb.netty.javabase.polymorphism;
 
 /**
  * Created with IDEA
  *
  * @author zwb
- * @create 2018/12/10 9:22
+ * @create 2018/12/10 16:14
  */
 public class Employee {
     private String name;

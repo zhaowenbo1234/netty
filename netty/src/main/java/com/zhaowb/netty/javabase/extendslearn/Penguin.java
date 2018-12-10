@@ -1,13 +1,12 @@
-package com.zhaowb.netty.extendslearn;
+package com.zhaowb.netty.javabase.extendslearn;
 
 /**
  * Created with IDEA
  *
  * @author zwb
- * @create 2018/12/7 15:59
+ * @create 2018/12/10 16:11
  */
 public class Penguin extends Animal {
-
     public Penguin() {
     }
 

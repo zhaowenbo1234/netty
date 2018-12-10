@@ -19,7 +19,7 @@ public class KeHengServerHandler extends SimpleChannelInboundHandler<DatagramPac
 
     private static final Logger logger = LoggerFactory.getLogger(KeHengServerHandler.class);
 
-    private static final String STARTBYTE = "5A";
+    private static final String START_BYTE = "5A";
 
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, DatagramPacket msg) {
@@ -44,7 +44,7 @@ public class KeHengServerHandler extends SimpleChannelInboundHandler<DatagramPac
         str = str.replaceAll("(.{2})", "$1 ");
         String[] arrStr = str.split(" ");
 
-        if (STARTBYTE.equalsIgnoreCase(arrStr[0])) {
+        if (START_BYTE.equalsIgnoreCase(arrStr[0])) {
             // 转换为int型数组
             int[] arr = new int[5];
             for (int i = 0; i < arr.length; i++) {

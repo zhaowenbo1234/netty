@@ -1,4 +1,4 @@
-package com.zhaowb.netty.extendslearn;
+package com.zhaowb.netty.javabase.extendslearn;
 
 /**
  * Created with IDEA

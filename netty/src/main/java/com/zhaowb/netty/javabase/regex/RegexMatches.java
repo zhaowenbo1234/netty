@@ -1,4 +1,4 @@
-package com.zhaowb.netty.regex;
+package com.zhaowb.netty.javabase.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

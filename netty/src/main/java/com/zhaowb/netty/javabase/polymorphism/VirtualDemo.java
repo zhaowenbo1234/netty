@@ -1,4 +1,4 @@
-package com.zhaowb.netty.polymorphism;
+package com.zhaowb.netty.javabase.polymorphism;
 
 /**
  * Created with IDEA

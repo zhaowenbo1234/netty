@@ -55,9 +55,5 @@ public class Test {
         System.out.println("object  = " + object);
         System.out.println("weight = " + weight);
         System.out.println("b1s0123 = " + b1s0123);
-
-        new Random(10).nextInt();
-
-        new Font("",Font.LAYOUT_LEFT_TO_RIGHT,12);
     }
 }

@@ -24,7 +24,7 @@ public class KeHeng {
     /**
      * 监听端口
      */
-    private final static int PORT = 16666;
+    private final static int PORT = 13000;
 
     public void run(int port) {
 

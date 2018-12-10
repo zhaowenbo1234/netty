@@ -120,7 +120,7 @@ public class LineCounter {
     public static void main(String args[]) {
         LineCounter lc = new LineCounter();
         //$NON-NLS-1$
-        lc.counter("D:\\IdeaProjects\\netty-learning\\netty\\src\\main\\java\\com\\zhaowb\\netty");
+        lc.counter("D:\\iotshudt\\trunk\\iot-env");
 
     }
 }
