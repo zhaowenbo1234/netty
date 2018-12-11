@@ -19,5 +19,9 @@ public class StringRegionMatch {
         boolean match2 = first_str.regionMatches(true, 11, second_str, 12, 9);
         System.out.println("区分大小写返回值：" + match1);
         System.out.println("不区分大小写返回值：" + match2);
+
+
+        String curDir = System.getProperty("user.dir");
+        System.out.println("你当前的工作目录为 :" + curDir);
     }
 }
