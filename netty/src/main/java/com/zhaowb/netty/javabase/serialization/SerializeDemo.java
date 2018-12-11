@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 /**
  * Created with IDEA
  * 序列化 Employee 到 文件 employee.ser
+ *
  * @author zwb
  * @create 2018/12/10 16:56
  */
@@ -16,7 +17,7 @@ public class SerializeDemo {
     public static void main(String[] args) {
         Employee e = new Employee();
         e.setAddress("Phokka Kuan, Ambehta Peer");
-        e.setName( "Reyan Ali");
+        e.setName("Reyan Ali");
         e.setSSN(112233);
         e.setNumber(1234566);
 
@@ -27,7 +28,7 @@ public class SerializeDemo {
             out.close();
             fileOutputStream.close();
             System.out.printf("Serialized data is saved in /tmp/employee.ser");
-        } catch (IOException el){
+        } catch (IOException el) {
             el.printStackTrace();
         }
     }

@@ -30,7 +30,7 @@ public class URLConnDemo {
             String urlString = "";
             String current;
             while ((current = in.readLine()) != null) {
-                urlString += current+"\n";
+                urlString += current + "\n";
             }
             System.out.println(urlString);
         } catch (IOException e) {

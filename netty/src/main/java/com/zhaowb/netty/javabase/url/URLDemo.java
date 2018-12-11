@@ -6,6 +6,7 @@ import java.net.URL;
 /**
  * Created with IDEA
  * 使用java.net的URL类获取URL的各个部分参数：
+ *
  * @author zwb
  * @create 2018/12/10 17:16
  */

@@ -30,7 +30,7 @@ public class MaximumTest {
                 "apple", "orange", maximum("pear", "apple", "orange"));
     }
 
-    public <E> void  method(E e){
+    public <E> void method(E e) {
 
     }
 }

@@ -9,26 +9,23 @@ import java.io.ObjectInputStream;
 /**
  * Created with IDEA
  * 反序列化，employee.ser 存储了 Employee 对象。
+ *
  * @author zwb
  * @create 2018/12/10 17:05
  */
 public class DeserializeDemo {
-    public static void main(String [] args)
-    {
+    public static void main(String[] args) {
         Employee e = null;
-        try
-        {
+        try {
             FileInputStream fileIn = new FileInputStream("/employee.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             e = (Employee) in.readObject();
             in.close();
             fileIn.close();
-        }catch(IOException i)
-        {
+        } catch (IOException i) {
             i.printStackTrace();
             return;
-        }catch(ClassNotFoundException c)
-        {
+        } catch (ClassNotFoundException c) {
             System.out.println("Employee class not found");
             c.printStackTrace();
             return;
