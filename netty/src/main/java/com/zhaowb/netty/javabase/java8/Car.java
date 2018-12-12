@@ -50,7 +50,7 @@ public class Car {
 
         names.forEach(System.out::println);
 
-        System.out.println("lamda...");
+        System.out.println("lambda...");
         names.forEach(s -> System.out.println(s));
 
     }
